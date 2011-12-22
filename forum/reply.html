@@ -3,56 +3,80 @@
 {% load markup %}
 {% load github-flavoured-markdown %}
 
-{% block javascript %}
+{% block pre-javascript %}
+<script type="text/javascript" src="/media/js/Markdown.Converter.js"></script>
+<script type="text/javascript" src="/media/js/Markdown.Sanitizer.js"></script>
+<script type="text/javascript" src="/media/js/Markdown.Editor.js"></script>
 <script type="text/javascript">
 window.onload=function()
 {
-	document.getElementById("id_content").focus();
+    document.getElementById("wmd-input").focus();
 };
+</script>
+{% endblock %}
+
+{% block post-javascript %}
+<script type="text/javascript">
+    (function () {
+        var converter = new Markdown.Converter();
+
+        converter.hooks.chain("plainLinkText", function (url) {
+            return url.replace(/^https?:\/\//, "");
+        });
+        
+        var help = function () { alert("Do you need help?"); }
+
+        var editor = new Markdown.Editor(converter, "", { handler: help });
+        editor.run();
+    })();
 </script>
 {% endblock %}
 
 {% block content %}
 
 <div class="topic">
-	<div class="title">{{ topic.title }}</div>
-	<div class="tags">Tags: {{ topic.tags }}</div>
+    <div class="title">{{ topic.title }}</div>
+    <div class="tags">Tags: {{ topic.tags }}</div>
 
-	<div class="posts">
-	{% for post in topic.post_set.all %}
-		<div class="post">
-			<div class="meta">
-				<a href="/account/{{ post.author }}">{{ post.author }}</a>
-				<span style="font-size: 75%;">- {{ post.updated_at|timesince }} ago</span>
-				<div class="right">
-					{% if user.is_authenticated %}
-					    {% if post.author == user %}
-					        <input type="button" value="Edit" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/edit';" />
-					        <input type="button" value="Delete" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/delete';" />
-					    {% endif %}
-					{% endif %}
-				</div>
-			</div>
-			<div class="content">{{ post.content|gfm|markdown }}</div>
-		</div>
-	{% endfor %}
-	</div>
+    <div class="posts">
+    {% for post in topic.post_set.all %}
+        <div class="post">
+            <div class="meta">
+                <a href="/account/{{ post.author }}">{{ post.author }}</a>
+                <span style="font-size: 75%;">- {{ post.updated_at|timesince }} ago</span>
+                <div class="right">
+                    {% if user.is_authenticated %}
+                        {% if post.author == user %}
+                            <input type="button" value="Edit" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/edit';" />
+                            <input type="button" value="Delete" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/delete';" />
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="content">{{ post.content|gfm|markdown }}</div>
+        </div>
+    {% endfor %}
+    </div>
 
-	<form action="/forum/{{ topic.id }}/reply/" method="POST">
-		<div class="meta">
-			<a href="/account/{{ user.username }}">{{ user.username }}</a>
-			<span style="font-size: 75%;">- now</span>
-			<div class="right">
-				<a class="popup" href="/dingus">Syntax Cheatsheet</a>
-				<input type="submit" value="Save" />
-			</div>
-		</div>
+    <form action="/forum/{{ topic.id }}/reply/" method="POST">
+        <div class="meta">
+            <a href="/account/{{ user.username }}">{{ user.username }}</a>
+            <span style="font-size: 75%;">- now</span>
+            <div class="right">
+                <a class="popup" href="/dingus">Syntax Cheatsheet</a>
+                <input type="submit" value="Save" />
+            </div>
+        </div>
         {% csrf_token %}
-        {{ form.non_field_errors }}
 
+        <div id="wmd-preview" class="wmd-preview"></div>
+        {{ form.non_field_errors }}
         {{ form.content.errors }}
-        {{ form.content }}
-	</form>
+        <div class="wmd-panel">
+            <div id="wmd-button-bar"></div>
+            <textarea id="wmd-input" rows="10" name="content"></textarea>
+        </div>
+    </form>
 
 </div>
 

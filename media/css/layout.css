@@ -240,15 +240,8 @@ ul.posts li .meta
     margin-bottom: 20px;
 }
 
-.topic form textarea
+textarea
 {
-    background-color: #000;
-    color: #FFF;
-    border: 0;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    /* I want to standardize this */
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

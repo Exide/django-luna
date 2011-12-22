@@ -10,8 +10,9 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="/media/css/main.css" />
         <link rel="stylesheet" type="text/css" href="/media/css/layout.css" />
+        <link rel="stylesheet" type="text/css" href="/media/css/pagedown.css" />
     {% endblock %}
-    {% block javascript %}
+    {% block pre-javascript %}
     {% endblock %}
 </head>
 <body>
@@ -41,6 +42,9 @@
         &copy; Copyright 2010 Ryan Zander. All rights reserved.
     </div>
 
+
+{% block post-javascript %}
+{% endblock %}
 {% if settings.GOOGLE_ANALYTICS_KEY %}
 <script type="text/javascript">
 
