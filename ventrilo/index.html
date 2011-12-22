@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h1>Ventrilo Servers</h1>
+
+<ol>
+{% for server in servers %}
+    <li><a href="/ventrilo/{{ server.id }}/">{{ server.name }}</a></li>
+{% endfor %}
+</ol>
+
+{% endblock %}

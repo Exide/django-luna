@@ -1,0 +1,327 @@
+#layout_account,
+#layout_header,
+#layout_page,
+#layout_footer
+{
+    position: relative;
+}
+
+/* ----- ACCOUNT BLOCK ----- */
+
+#layout_account
+{
+    height: 25px;
+    line-height: 25px;
+    font-size: 0.75em;
+    text-align: right;
+    margin: 0 10px;
+}
+
+/* ----- HEADER BLOCK ----- */
+
+#layout_header
+{
+    height: 60px;
+    background-color: #036;
+    border-bottom: 5px #047 solid;
+    border-top: 5px #047 solid;
+}
+
+/* ----- TITLE ----- */
+
+#layout_title
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: auto;
+    margin: 0 0 0 20px;
+}
+
+#layout_title a
+{
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    font-size: 50px;
+    color: #FFF;
+}
+
+#layout_title a:hover
+{
+    text-decoration: none;
+}
+
+/* ----- MENU ----- */
+
+#layout_menu
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 60px;
+}
+
+#layout_menu ul
+{
+    height: 60px;
+    float: right;
+    margin: 0 10px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.25em;
+}
+
+#layout_menu li
+{
+    display: block;
+    float: left;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+}
+
+#layout_menu a
+{
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    color: #FFF;
+    font-size: 1.5em;
+    letter-spacing: 5px;
+    line-height: 60px;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+#layout_menu a:hover
+{
+    background-color: #047;
+}
+
+/* ----- PAGE BLOCK ----- */
+
+#layout_page
+{
+    margin: 20px;
+}
+
+/* ----- FOOTER BLOCK ----- */
+
+#layout_footer
+{
+    text-align: center;
+    font-size: 0.75em;
+    color: #666;
+    margin: 0 20px 50px 20px;
+}
+
+/* ----- UTILITIES ----- */
+
+.thumbnail
+{
+    width: 50px;
+    height: 50px;
+}
+
+/*  Two DIVs side by side
+
+.layout_wrapper {margin: 0 auto;}
+.left {float: left;}
+.right {float: right;}
+.half {width: 50%;}
+*/
+
+/* ----- FORUM ----- */
+
+ul.posts
+{
+    position: relative;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.posts li
+{
+    position: relative;
+    padding: 0;
+}
+
+ul.posts li .post
+{
+    display: block;
+    padding: 5px 7px;
+    margin: 0 0 2px 0;
+    background-color: #222;
+}
+
+ul.posts li .post:hover
+{
+    background-color: #333;
+    text-decoration: none;
+}
+
+ul.posts li .tags
+{
+    font-size: 70%;
+    color: #777;
+}
+
+ul.posts li .meta
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 7px;
+}
+
+.topic .title
+{
+    font-size: 175%;
+}
+
+.topic .tags
+{
+    font-size: 75%;
+    color: #777;
+}
+
+.topic .posts
+{
+    margin: 20px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.topic .post
+{
+    background-color: #000;
+    padding: 5px 20px;
+    margin: 0 0 20px 0;
+}
+
+.topic .meta
+{
+    margin: 5px -10px 0 -10px;
+}
+
+.topic form .meta
+{
+    margin: 0;
+    padding: 7px 10px;
+    background-color: #000;
+}
+
+.meta
+{
+    font-size: 90%;
+}
+
+.meta .right
+{
+    float: right;
+}
+
+.topic form .meta input,
+.topic .post .meta input
+{
+    margin: -2px 2px -2px 0;
+}
+
+.topic form
+{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.topic form .field-container
+{
+    margin-bottom: 20px;
+}
+
+.topic form textarea
+{
+    background-color: #000;
+    color: #FFF;
+    border: 0;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    /* I want to standardize this */
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.topic input#id_title,
+.topic input#id_tags
+{
+    background-color: #000;
+    color: #FFF;
+    border: 0;
+    padding: 5px 7px;
+}
+
+.topic input#id_title
+{
+    width: 40%;
+    border-bottom: 3px #222 solid;
+}
+
+.topic input#id_tags
+{
+    border-bottom: 3px #222 solid;
+}
+
+/* ----- TAG CLOUD ----- */
+.tag-cloud  { text-align: center; font-size: 1em; }
+.tag-1      { font-size: 75%; }
+.tag-2      { font-size: 100%; }
+.tag-3      { font-size: 125%; }
+.tag-4      { font-size: 150%; }
+.tag-5      { font-size: 175%; }
+.tag-6      { font-size: 200%; }
+.tag-7      { font-size: 225%; }
+.tag-8      { font-size: 250%; }
+
+/* ----- VENTRILO ----- */
+
+#ventrilo
+{
+    clear: left;
+    float: right;
+    border: 3px #222 solid;
+    background-color: #000;
+    padding: 20px;
+    margin-left: 10px;
+}
+#ventrilo .header           { text-align: center; margin-bottom: 20px; }
+#ventrilo .title            { font-size: 150%; }
+#ventrilo .address          { font-size: 75%; }
+#ventrilo .updated          { font-size: 70%; color: #999; }
+#ventrilo .client .comment  { font-size: 75%; color: #AAA; font-style: italic; }
+#ventrilo .channel_name
+{
+    margin: 10px -20px 5px -20px;
+    padding: 3px 5px;
+    text-align: right;
+    letter-spacing: 3px;
+    background-color: #222;
+}
+
+.topics .toolbar
+{
+    float: right;
+    margin: 0;
+}
+
+.topics .pagination
+{
+    display: inline-block;
+}
+
+.topic .pagination
+{
+    float: right;
+}

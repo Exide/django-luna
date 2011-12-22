@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if accounts %}
+	<h1>List of Active Accounts</h1>
+	<ol>
+	{% for account in accounts %}
+		<li><a href="/account/{{ account.username }}">{{ account.username }}</a></li>
+	{% endfor %}
+	</ol>
+{% else %}
+	Wow! There are no users on this site.
+{% endif %}
+
+{% endblock %}

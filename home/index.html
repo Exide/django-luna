@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block javascript %}
+    {{ block.super }}
+    <script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript">
+        function ventrilo_status()
+        {
+            $('#ventrilo').html('<img src="/media/img/ajax-loading.gif" alt="Loading"/>');
+            $('#ventrilo').load('/ventrilo/1');
+        }
+        $(document).ready(function()
+        {
+            ventrilo_status();
+            setInterval(ventrilo_status, 60000);
+        });
+    </script>
+{% endblock %}
+{% block content %}
+
+<div id="ventrilo"><img src="/media/img/ajax-loading.gif" alt="Loading"/></div>
+
+<h1>About</h1>
+<p>This is a sample description of the {{ SITE_NAME }} community.</p>
+
+{% endblock %}

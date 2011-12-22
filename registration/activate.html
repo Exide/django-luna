@@ -1,0 +1,15 @@
+{% extends "modal.html" %}
+
+{% block content %}
+
+{% if account %}
+	<h1>Activation Successful!</h1>
+	<p>Your account <strong>{{ user.username }}</strong> has been activated.</p>
+	<p><a href="{% url auth_login %}">Click here to login</a></p>
+{% else %}
+	<h1>Activation Failed!</h1>
+	<p>Please contact <a href="mailto:support@nocturnalreign.org">support@nocturnalreign.org</a> for assistance.</p>
+	<p><a href="/">Click here to return to the site</a></p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% load markup %}
+{% load github-flavoured-markdown %}
+
+{% block javascript %}
+<script type="text/javascript">
+window.onload=function()
+{
+	document.getElementById("id_content").focus();
+};
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="topic">
+	<div class="title">{{ topic.title }}</div>
+	<div class="tags">Tags: {{ topic.tags }}</div>
+
+	<div class="posts">
+	{% for post in topic.post_set.all %}
+		<div class="post">
+			<div class="meta">
+				<a href="/account/{{ post.author }}">{{ post.author }}</a>
+				<span style="font-size: 75%;">- {{ post.updated_at|timesince }} ago</span>
+				<div class="right">
+					{% if user.is_authenticated %}
+					    {% if post.author == user %}
+					        <input type="button" value="Edit" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/edit';" />
+					        <input type="button" value="Delete" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/delete';" />
+					    {% endif %}
+					{% endif %}
+				</div>
+			</div>
+			<div class="content">{{ post.content|gfm|markdown }}</div>
+		</div>
+	{% endfor %}
+	</div>
+
+	<form action="/forum/{{ topic.id }}/reply/" method="POST">
+		<div class="meta">
+			<a href="/account/{{ user.username }}">{{ user.username }}</a>
+			<span style="font-size: 75%;">- now</span>
+			<div class="right">
+				<a class="popup" href="/dingus">Syntax Cheatsheet</a>
+				<input type="submit" value="Save" />
+			</div>
+		</div>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {{ form.content.errors }}
+        {{ form.content }}
+	</form>
+
+</div>
+
+{% endblock %}

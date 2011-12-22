@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% load tags %}
+{% load markup %}
+{% load github-flavoured-markdown %}
+{% load pagination_tags %}
+{% block content %}
+
+<div class="topic">
+	<div class="title">{{ topic.title }}</div>
+	<div class="tags">Tags: {% tags_for_object topic as tags %}{% for tag in tags %}{{ tag|lower }} {% endfor %}</div>
+	{% autopaginate posts 10 %}
+	{% paginate %}
+	<div class="posts">
+	{% for post in posts %}
+		<div class="post">
+			<div class="meta">
+				<a href="/account/{{ post.author }}">{{ post.author }}</a>
+				<span style="font-size: 75%;">- {{ post.updated_at|timesince }} ago</span>
+				<div class="right">
+					{% if user.is_authenticated %}
+					    {% if post.author == user %}
+					        <input type="button" value="Edit" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/edit';" />
+					        <input type="button" value="Delete" onClick="window.location='/forum/{{ topic.id }}/post/{{ post.id }}/delete';" />
+					    {% endif %}
+					{% endif %}
+				</div>
+			</div>
+			<div class="content">{{ post.content|markdown:"nl2br" }}</div>
+		</div>
+	{% endfor %}
+	</div>
+	{% paginate %}
+
+	<input type="button" value="Reply" onClick="window.location='/forum/{{ topic.id }}/reply';" />
+</div>
+
+{% endblock %}

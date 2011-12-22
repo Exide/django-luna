@@ -1,0 +1,6 @@
+Your account at Nocturnal Reign has been created but is currently inactive.
+
+To activate your account, go here:
+http://{{ site }}/account/activate/{{ activation_key }}
+
+This key will expire in 7 days and your information will be released from our database.

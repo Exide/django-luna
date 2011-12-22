@@ -1,0 +1,70 @@
+html, body
+{
+	font-size: 1em;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#floater
+{
+	height: 50%;
+	margin-bottom: -125px;
+	position: relative;
+}
+
+#content
+{
+	clear: both;
+	height: 200px;
+	position: relative;
+	margin: 0 auto;
+	background-color: #000;
+	border: 3px #333 solid;
+	width: 300px;
+	padding: 20px;
+}
+
+form
+{
+	
+}
+
+h1
+{
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+
+#errors
+{
+	color: #C33;
+	margin-bottom: 15px;
+}
+
+table
+{
+	width: 100%;
+}
+
+table input
+{
+	width: 100%;
+}
+
+table label
+{
+	padding: 0;
+}
+
+#buttons
+{
+	text-align: right;
+	margin: 15px 0 0 0;
+}
+
+#buttons input
+{
+	font-size: 1em;
+	margin: 0;
+}

@@ -1,0 +1,40 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    font-family: "Tahoma", "Geneva", sans-serif;
+    font-size: 1em;
+    background-color: #111;
+    color: #FFF;
+    position: relative;
+}
+
+body,textarea,input
+{
+    font-family: "Tahoma", "Geneva", sans-serif;
+    font-size: 1em;
+}
+
+a
+{
+    color: #BAA257;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #EDD58A;
+    text-decoration: underline;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    font-weight: normal;
+}
+
+h1  { font-size: 175%; }
+h2  { font-size: 150%; }
+h3  { font-size: 125%; }
+h4  { font-size: 75%; }
+h5  { font-size: 50%; }
+h6  { font-size: 25%; }

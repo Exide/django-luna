@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="topic">
+    <form action="/forum/new/" method="POST">
+        {% csrf_token %}
+        {{ topic_form.non_field_errors }}
+        {{ post_form.non_field_errors }}
+
+        <div class="field-container">
+            {{ topic_form.title.errors }}
+            <label for="id_title">Title:</label>
+            {{ topic_form.title|default:"Title" }}
+        </div>
+
+        {{ post_form.content.errors }}
+        {{ post_form.content }}
+
+        <div class="field-container">
+            {{ topic_form.tags.errors }}
+            <label for="id_tags">Tags:</label>
+            {{ topic_form.tags }}
+        </div>
+
+        <input type="submit" value="Save" />
+        <a class="popup" href="/dingus">Syntax Cheatsheet</a>
+    </form>
+</div>
+
+{% endblock %}

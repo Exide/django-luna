@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% load tags %}
+{% load pagination_tags %}
+{% block content %}
+
+<div class="tag-cloud">
+{% tag_cloud_for_model forum.Topic as tags with steps=6 min_count=1 distribution=log %}
+{% for tag in tags|slice:":10" %}
+    <a href="/forum/tag/{{tag.name|slugify}}/" class="tag-{{tag.font_size|add:"2"}}">{{tag.name}}</a>
+{% endfor %}
+</div>
+
+{% if recent_topics %}
+    <div class="topics">
+        {% autopaginate recent_topics 50 %}
+        <div class="toolbar">
+            {% paginate %}
+            <input type="button" value="Create Topic" onClick="window.location='/forum/new';" />
+        </div>
+        <h2>Latest Topics</h2>
+        <ul class="posts">
+        {% for topic in recent_topics %}
+            <li>
+                <a href="/forum/{{ topic.id }}" class="post">
+                    {{ topic.title }}
+                    <span class="tags">{% tags_for_object topic as tags %}{% for tag in tags %}{{ tag|lower }} {% endfor %}</span>
+                </a>
+                <span class="meta">last updated {{ topic.last_updated.updated_at|timesince }} ago by <a href="/account/{{ topic.last_updated.author }}">{{ topic.last_updated.author }}</a></span>
+            </li>
+        {% endfor %}
+        </ul>
+        <div class="toolbar">
+            {% paginate %}
+            <input type="button" value="Create Topic" onClick="window.location='/forum/new';" />
+        </div>
+    </div>
+{% else %}
+    <p>There are currently no topics!</p>
+    <input type="button" value="Create Topic" onClick="window.location='/forum/new';" />
+{% endif %}
+
+{% endblock %}

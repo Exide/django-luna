@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>Posts tagged as {{ tag }}</h1>
+
+{% if topics %}
+    <ul class="posts">
+    {% for topic in topics %}
+        <li>
+            <a href="/forum/{{ topic.id }}" class="post">
+                {{ topic.title }}
+                <span class="tags">{{ topic.tags }}</span>
+            </a>
+            <span class="meta">last updated {{ topic.last_updated.updated_at|timesince }} ago by <a href="/account/{{ topic.last_updated.author }}">{{ topic.last_updated.author }}</a></span>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    You've found a rogue tag! There are no posts associated with this tag.
+{% endif %}
+
+{% endblock %}

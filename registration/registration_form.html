@@ -1,0 +1,22 @@
+{% extends "modal.html" %}
+
+{% block content %}
+<form method="post">
+{% csrf_token %}
+
+<h1>Account Registration</h1>
+
+{% if form.errors %}
+<div id="errors">Your username or password are invalid. Please try again.</div>
+{% endif %}
+
+{{ form.as_p }}
+
+<div id="buttons">
+	<input type="submit" value="Create" />
+	<input type="button" value="Cancel" onClick="location.href = '/'" />
+	<input type="hidden" name="next" value="{{ next }}" />
+</div>
+
+</form>
+{% endblock %}
