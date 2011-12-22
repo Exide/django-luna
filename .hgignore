@@ -1,4 +1,5 @@
-.*\.pyc
-.*\.sublime-project
-.*\.sublime-workspace
-.*\.sqlite3
+syntax: glob
+*.pyc
+*.sublime-project
+*.sublime-workspace
+*.sqlite3
