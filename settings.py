@@ -1,9 +1,11 @@
+import os
+
 # Luna Settings
 
 DEBUG = True
 SITE_NAME = 'Luna'
-ADMINS = (('Admin', 'admin@example.com'))
-#GOOGLE_ANALYTICS_KEY = 'UA-11764852-3'
+ADMINS = ('Admin', 'admin@example.com')
+# GOOGLE_ANALYTICS_KEY = 'UA-12345678-9'
 ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.example.com'
@@ -12,70 +14,42 @@ EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.sqlite3',   # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME':     'db.sqlite3',                   # Or path to database file if using sqlite3.
-        'USER':     '',                             # Not used with sqlite3.
-        'PASSWORD': '',                             # Not used with sqlite3.
-        'HOST':     '',                             # Set to empty string for localhost. Not used with sqlite3.
-        'PORT':     '',                             # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = 'America/Los_Angeles'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
-
 
 # Django specific settings below this line. Advanced users only!
 # ----------------------------------------------------------------------------
 
-import os
-
 TEMPLATE_DEBUG = DEBUG
-
 MANAGERS = ADMINS
-
 SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
 USE_L10N = True
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/admin/'
+SECRET_KEY = 'you-should-generate-a-good-hash-for-this'
+AUTHENTICATION_BACKENDS = 'account.backends.CaseInsensitiveBackend'
+PAGINATION_DEFAULT_WINDOW = 5
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'yfbphxd6#%f82p3$6s^&d00**(dk-(4b5wf5ae-8bxy7d0sjab'
+ROOT_URLCONF = 'urls'
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/'
 
-# List of callables that know how to import templates from various sources.
+TEMPLATE_DIRS = os.path.abspath(os.path.dirname(__file__))
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    #'django.template.loaders.eggs.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,12 +59,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'pagination.middleware.PaginationMiddleware',
-)
-
-ROOT_URLCONF = 'urls'
-
-TEMPLATE_DIRS = (
-    os.path.abspath(os.path.dirname(__file__)),
 )
 
 INSTALLED_APPS = (
@@ -112,15 +80,6 @@ INSTALLED_APPS = (
     'pagination',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'account.backends.CaseInsensitiveBackend',
-    #'django.contrib.auth.backends.ModelBackend',
-)
-
-LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/'
-
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -131,5 +90,3 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'context_processors.default'
 )
-
-PAGINATION_DEFAULT_WINDOW = 5
