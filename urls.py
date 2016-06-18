@@ -13,7 +13,6 @@ urlpatterns = patterns('',
                        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        (r'^account/', include('account.urls')),
                        (r'^accounts/', 'account.views.index'),
-                       (r'^ventrilo/', include('ventrilo.urls'))
                        )
 
 if DEBUG:

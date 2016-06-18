@@ -278,31 +278,6 @@ textarea
 .tag-7      { font-size: 225%; }
 .tag-8      { font-size: 250%; }
 
-/* ----- VENTRILO ----- */
-
-#ventrilo
-{
-    clear: left;
-    float: right;
-    border: 3px #222 solid;
-    background-color: #000;
-    padding: 20px;
-    margin-left: 10px;
-}
-#ventrilo .header           { text-align: center; margin-bottom: 20px; }
-#ventrilo .title            { font-size: 150%; }
-#ventrilo .address          { font-size: 75%; }
-#ventrilo .updated          { font-size: 70%; color: #999; }
-#ventrilo .client .comment  { font-size: 75%; color: #AAA; font-style: italic; }
-#ventrilo .channel_name
-{
-    margin: 10px -20px 5px -20px;
-    padding: 3px 5px;
-    text-align: right;
-    letter-spacing: 3px;
-    background-color: #222;
-}
-
 .topics .toolbar
 {
     float: right;

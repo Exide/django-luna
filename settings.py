@@ -76,7 +76,6 @@ INSTALLED_APPS = (
     'home',
     'forum',
     'games',
-    'ventrilo',
     'registration',
     'tagging',
     'pagination',

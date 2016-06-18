@@ -76,9 +76,6 @@ To get up and running you'll need to create the database and prime it with the n
     Creating table forum_topic
     Creating table forum_post
     Creating table games_game
-    Creating table ventrilo_server
-    Creating table ventrilo_channel
-    Creating table ventrilo_client
     Creating table registration_registrationprofile
     Creating table tagging_tag
     Creating table tagging_taggeditem
@@ -111,24 +108,3 @@ _If you required to login, use the superuser account created in "Construct the b
 
 - Browse to: [http://localhost:8000/admin/sites/site/1/](http://localhost:8000/admin/sites/site/1/)
 - Set the domain name and display name to the correct values for your site.
-
-## How to setup support for Ventrilo
-
-### Configure the site for your Ventrilo server
-
-_If you required to login, use the superuser account created in "Construct the backend"_
-
-- Browse to: [http://localhost:8000/admin/ventrilo/server/add/](http://localhost:8000/admin/ventrilo/server/add/)
-- Enter the values for your Ventrilo server.
-
-### Query the status of your Ventrilo server
-
-To get the current status of your Ventrilo server you'll need to execute the included ```update_ventrilo``` command.
-When executing the command you'll need to supply a ```<HOST>```, which must match the value entered in the previous step.
-
-    $ .venv/bin/python manage.py update_ventrilo <HOST>
-
-To keep the information in the database up-to-date you'll want to execute this command on a schedule.
-Here is a simple [Cron](https://en.wikipedia.org/wiki/Cron) entry that updates every 15 minutes.
-
-    */15 * * * * /path/to/project/.venv/bin/python manage.py update_ventrilo vent.example.com >> /path/to/project/update_ventrilo.log
