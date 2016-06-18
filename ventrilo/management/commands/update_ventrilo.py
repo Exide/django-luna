@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from luna.ventrilo.models import Server, Channel, Client
+from ventrilo.models import Server, Channel, Client
 import subprocess
 import urllib2
 

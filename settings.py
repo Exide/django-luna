@@ -87,7 +87,7 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
 )
 
-ROOT_URLCONF = 'luna.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     os.path.abspath(os.path.dirname(__file__)),
@@ -102,18 +102,18 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.markup',
-    'luna.account',
-    'luna.home',
-    'luna.forum',
-    'luna.games',
-    'luna.ventrilo',
+    'account',
+    'home',
+    'forum',
+    'games',
+    'ventrilo',
     'registration',
     'tagging',
     'pagination',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'luna.account.backends.CaseInsensitiveBackend',
+    'account.backends.CaseInsensitiveBackend',
     #'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -129,7 +129,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'luna.context_processors.default'
+    'context_processors.default'
 )
 
 PAGINATION_DEFAULT_WINDOW = 5

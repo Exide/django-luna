@@ -4,18 +4,18 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'luna.home.views.index'),
-    (r'^dingus/$', 'luna.home.views.dingus'),
-    (r'^forum/', include('luna.forum.urls')),
-    (r'^games/', include('luna.games.urls')),
+    (r'^$', 'home.views.index'),
+    (r'^dingus/$', 'home.views.dingus'),
+    (r'^forum/', include('forum.urls')),
+    (r'^games/', include('games.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^account/', include('luna.account.urls')),
-    (r'^accounts/', 'luna.account.views.index'),
-    (r'^ventrilo/', include('luna.ventrilo.urls')),
+    (r'^account/', include('account.urls')),
+    (r'^accounts/', 'account.views.index'),
+    (r'^ventrilo/', include('ventrilo.urls')),
 )
 
-from luna.settings import DEBUG, MEDIA_URL, MEDIA_ROOT
+from settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 if DEBUG:
     from django.views.static import serve
 

@@ -1,4 +1,4 @@
-from luna.forum.models import Topic, Post
+from models import Topic, Post
 from django.contrib import admin
 
 admin.site.register(Topic)

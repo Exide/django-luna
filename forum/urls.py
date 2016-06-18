@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('luna.forum.views',
+urlpatterns = patterns('forum.views',
     (r'^$', 'index'),
     (r'^new/$', 'new'),
     (r'^(?P<topic_id>\d+)/$', 'show'),

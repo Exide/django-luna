@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from luna.ventrilo.models import Server
+from models import Server
 
 def index(request):
     response = {'servers': Server.objects.all }
